@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongo = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
@@ -5,11 +6,12 @@ const morgan = require('morgan'); //log reqs
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const app = express();
-require('dotenv').config();
 const session = require('express-session');
 const flash = require('connect-flash');
-const configURL = process.env.CONFIGURL /*$3rverMain!*/
+const configURL = process.env.CONFIGURL;
+const cookieParser = require('cookie-parser');
 
+app.use(cookieParser());
 
 /* Prevent CORS issues */
 var cors = (function(req,res,next){
